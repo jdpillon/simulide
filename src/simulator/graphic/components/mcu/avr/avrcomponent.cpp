@@ -31,7 +31,7 @@ LibraryItem* AVRComponent::libraryItem()
         tr("AVR"),
         tr("Micro"),
         "ic2.png",
-        tr("AVR"),
+        "AVR",
 		AVRComponent::construct );
 }
 

@@ -48,14 +48,14 @@ ComponentSelector::ComponentSelector( QWidget *parent )
         }
     }
 
-    loadXml( appPath+"/data/avrs.xml", "AVR","AVR");
+    loadXml( appPath+"/data/avrs.xml", "AVR", "AVR");
     
     connect( this, SIGNAL(itemPressed(QTreeWidgetItem*, int)),
              this, SLOT  (slotItemClicked(QTreeWidgetItem *, int)) );
 }
 ComponentSelector::~ComponentSelector() { }
 
-void ComponentSelector::loadXml( const QString &mculist, const QString &category, const QString &caption )
+void ComponentSelector::loadXml( const QString &mculist, const QString &category, const QString &type )
 {
     QFile file(mculist);
     if (!file.open(QFile::ReadOnly | QFile::Text))
@@ -90,7 +90,7 @@ void ComponentSelector::loadXml( const QString &mculist, const QString &category
                 icon.append("/data/images/");
                 icon.append(element.attribute("icon"));
             }
-            addItem( element.attribute( "name" ), category, icon, caption );
+            addItem( element.attribute( "name" ), category, icon, type );
         }
         node = node.nextSibling();
     }
@@ -139,7 +139,6 @@ void ComponentSelector::addItem( const QString &caption, const QString &_categor
                        titulo = it->child(j);
                 }
             }
-
         }
     }
     m_categories.append(caption);
@@ -159,12 +158,12 @@ void ComponentSelector::slotItemClicked( QTreeWidgetItem *item, int column)
 
     if (!item) return;
 
-    if( item->icon(0).isNull() ) return;
-
     QMimeData *mimeData = new QMimeData;
     QString type = item->data(0, Qt::UserRole).toString();
     mimeData->setText( item->text(0) );
     mimeData->setHtml( type );              // esto hay que revisarlo
+
+    if( type=="" ) return;
 
     QDrag *drag = new QDrag(this);
     drag->setMimeData(mimeData);

@@ -35,8 +35,7 @@ Simulator::Simulator( QObject* parent ) : QObject(parent)
     m_reaStepsPT = 200; //250;
     m_stepsPrea  = 100;
     m_mcuStepsPT = 16;
-    m_simuclock = 1e4;  // steps/Sec
-    m_mcuStepF  = 0.0;  // Float value to keep fractional step count
+    m_reaClock = 1e4;  // steps/Sec
     m_step      = 0;
     m_numEnodes = 0;
     m_simurate  = 0;
@@ -51,13 +50,13 @@ void Simulator::timerEvent( QTimerEvent* e )  //update at m_timerTick rate (20 m
     e->accept();
     if( !m_isrunning ) return;
 
-    for( int i=0; i<m_reaStepsPT; i++ )     // Update at m_simuclock rate (100 us, 10 KHz max)
+    for( int i=0; i<m_reaStepsPT; i++ )     // Update at m_reaClock rate (100 us, 10 KHz max)
     {                                       // Used for reactive elements
         /*timespec ts;
         clock_gettime(CLOCK_REALTIME, &ts);
         long ns = ts.tv_nsec;*/
 
-        for( int j=0; j<m_stepsPrea; j++ )  // Update at m_simuclock*100 rate (1 us, 1 MHz  max)
+        for( int j=0; j<m_stepsPrea; j++ )  // Update at m_reaClock*100 rate (1 us, 1 MHz  max)
         {                                   // Used for all non-reactive elements
             m_step ++;
 
@@ -157,17 +156,17 @@ void Simulator::simuRateChanged( int rate )
         m_timerTick  = 20;
         m_reaStepsPT = 200;
         m_stepsPrea  = 100;
-        m_mcuStepsPT = (float)rate/1000000;
+        m_mcuStepsPT = rate/1000000;
 
         if( rate < 1000000 )
         {
             m_mcuStepsPT = 1;
-            m_stepsPrea = rate/10000;
-            if( rate<10000 )
+            m_stepsPrea = rate/m_reaClock;
+            if( rate<m_reaClock )
             {
                 m_stepsPrea = 1;
                 m_reaStepsPT = rate/50;
-                if( rate<200 )
+                if( rate<50 )
                 {
                     m_reaStepsPT = 1;
                     m_timerTick = 1000/rate;
@@ -181,9 +180,9 @@ void Simulator::simuRateChanged( int rate )
 void Simulator::setChanged( bool changed ) { m_changed = changed; }
 void Simulator::setNodeVolt( int enode, double v ) { m_eNodeList.at(enode)->setVolt( v ); }
 bool Simulator::isRunning()  { return m_isrunning; }
-int  Simulator::simuRate()   { return m_simurate; }
-int  Simulator::simuClock()  { return m_simuclock; }
-int  Simulator::stepsPT()    { return m_reaStepsPT; }
+//int  Simulator::simuRate()   { return m_simurate; }
+int  Simulator::reaClock()  { return m_reaClock; }
+//int  Simulator::stepsPT()    { return m_reaStepsPT; }
 unsigned long long Simulator::step() { return m_step; }
 
 void Simulator::addToEnodeList( eNode* nod )

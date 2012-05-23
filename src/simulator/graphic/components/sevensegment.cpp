@@ -29,7 +29,7 @@ Component* SevenSegment::construct( QObject* parent, QString type, QString id )
 LibraryItem* SevenSegment::libraryItem()
 {
     return new LibraryItem(
-        tr( "Seven Segment" ),
+        tr( "7 Segment" ),
         tr( "Outputs" ),
         "seven_segment.png",
         "Seven Segment",

@@ -45,9 +45,9 @@ class Simulator : public QObject
         void reset();
         void simuRateChanged( int rate );
 
-        int  simuClock();
-        int  simuRate();
-        int  stepsPT();
+        int  reaClock();
+        //int  simuRate();
+        //int  stepsPT();
         bool isRunning();
         bool isAnimated();
 
@@ -86,13 +86,11 @@ class Simulator : public QObject
 
         int m_numEnodes;
         int m_simurate;
-        int m_simuclock;
+        int m_reaClock;
         int m_reaStepsPT;
         int m_stepsPrea;
         int m_timerTick;
-
-        float m_mcuStepF;
-        float m_mcuStepsPT;
+        int m_mcuStepsPT;
 
         unsigned long long m_step;
         

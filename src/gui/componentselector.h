@@ -45,7 +45,7 @@ class ComponentSelector : public QTreeWidget
                       const QString & icon,
                       const QString & type );
 
-        void loadXml( const QString &mculist, const QString &category, const QString &caption );
+        void loadXml( const QString &mculist, const QString &category, const QString &type );
 
         void mouseReleaseEvent(QMouseEvent *);
 

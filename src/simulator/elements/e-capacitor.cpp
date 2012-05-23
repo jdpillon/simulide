@@ -17,9 +17,8 @@
  *                                                                         *
  ***************************************************************************/
 
-// capacitor companion model using trapezoidal approximation
-// (Norton equivalent) consists of a current source in
-// parallel with a resistor.
+// Capacitor model using backward euler  approximation
+// consists of a current source in parallel with a resistor.
 
 #include <cmath>
 
@@ -28,8 +27,8 @@
 eCapacitor::eCapacitor() : eResistor()
 {
     m_cap = 1; // uF
-    m_tStep = 1/(double)Simulator::self()->simuClock();
-    m_resist = m_tStep/(2*m_cap*1e-6);// capacitance property(m_cap) is in uF, covert to F
+    m_tStep = 1/(double)Simulator::self()->reaClock();
+    m_resist = m_tStep/(m_cap*1e-6);// capacitance property(m_cap) is in uF, covert to F
     m_curSource = 0;
 
     Simulator::self()->addToReacList( this );
@@ -50,19 +49,16 @@ void eCapacitor::runStep()
 
     double volt0 = m_ePin[0]->getVolt();
     double volt1 = m_ePin[1]->getVolt();
-
     double volt = volt0 - volt1;
 
-    m_curSource = -2*volt/m_resist-m_curSource;
+    m_curSource = volt/m_resist;
 
-    //m_volt[0] = volt0;
-    //m_volt[1] = volt1;
     //qDebug() << "eCapacitor::setVChanged voltdiff " <<volt<< " m_curSource "<<m_curSource;
 
-    m_ePin[0]->stampCurrent( -m_curSource );
-    m_ePin[1]->stampCurrent(  m_curSource );
+    m_ePin[0]->stampCurrent( m_curSource );
+    m_ePin[1]->stampCurrent(-m_curSource );
 }
 
 double eCapacitor::uF()             { return m_cap; }
-void  eCapacitor::setuF( double c ) { m_cap = c; eResistor::setRes( m_tStep/(m_cap/1e6) ); }
+void  eCapacitor::setuF( double c ) { m_cap = c; eResistor::setRes( m_tStep/(m_cap*1e-6) ); }
 
