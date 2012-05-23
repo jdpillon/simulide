@@ -1,4 +1,4 @@
-A Circuit Simulator.
+A Electronic Circuit Simulator.
 
 It's developed in C++ using Qt4 framework.
 
