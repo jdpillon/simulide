@@ -1,7 +1,7 @@
 <!DOCTYPE SimutronQt4>
 <boardlist>
 
-<mcu name="Arduino Uno"  type="Arduino Uno" icon="arduinoUno.png"></mcu>
+<mcu name="Arduino Uno"  type="Arduino" icon="arduinoUno.png"></mcu>
 
 </boardlist>
 

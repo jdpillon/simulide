@@ -40,53 +40,53 @@
 
 <mcu name="atmega16" type="atmega32"></mcu>
 
-<mcu name="atmega32" type="atmega32" pins="40" width="8" height="42">
+<mcu name="atmega32" type="atmega32" pins="40" width="6" height="21">
 
-    <pin angle="180" pos="1"  type="bidir" id="PB0"/>
-    <pin angle="180" pos="2"  type="bidir" id="PB1"/>
-    <pin angle="180" pos="3"  type="bidir" id="PB2"/>
-    <pin angle="180" pos="4"  type="bidir" id="PB3"/>
-    <pin angle="180" pos="5"  type="bidir" id="PB4"/>
-    <pin angle="180" pos="6"  type="bidir" id="PB5"/>
-    <pin angle="180" pos="7"  type="bidir" id="PB6"/>
-    <pin angle="180" pos="8"  type="bidir" id="PB7"/>
+    <pin angle="180" pos="1"  type="bidir" id="PB0" label="B0"/>
+    <pin angle="180" pos="2"  type="bidir" id="PB1" label="B1"/>
+    <pin angle="180" pos="3"  type="bidir" id="PB2" label="B2"/>
+    <pin angle="180" pos="4"  type="bidir" id="PB3" label="B3"/>
+    <pin angle="180" pos="5"  type="bidir" id="PB4" label="B4"/>
+    <pin angle="180" pos="6"  type="bidir" id="PB5" label="B5"/>
+    <pin angle="180" pos="7"  type="bidir" id="PB6" label="B6"/>
+    <pin angle="180" pos="8"  type="bidir" id="PB7" label="B7"/>
 
-    <pin angle="180" pos="9"  type="mclr"  id="MCLR"/>
-    <pin angle="180" pos="10" type="vcc"   id="VCC"/>
-    <pin angle="180" pos="11" type="gnd"   id="GND"/>
-    <pin angle="180" pos="12" type="osc"   id="OSC2"/>
-    <pin angle="180" pos="13" type="osc"   id="OSC1"/>
+    <pin angle="180" pos="9"  type="mclr"  id="MCLR"  label="Rst"/>
+    <pin angle="180" pos="10" type="vcc"   id="VCC" label=" +"/>
+    <pin angle="180" pos="11" type="gnd"   id="GND" label=" -"/>
+    <pin angle="180" pos="12" type="osc"   id="OSC2"  label="Osc"/>
+    <pin angle="180" pos="13" type="osc"   id="OSC1"  label="Osc"/>
 
-    <pin angle="180" pos="14" type="bidir" id="PD0"/>
-    <pin angle="180" pos="15" type="bidir" id="PD1"/>
-    <pin angle="180" pos="16" type="bidir" id="PD2"/>
-    <pin angle="180" pos="17" type="bidir" id="PD3"/>
-    <pin angle="180" pos="18" type="open"  id="PD4"/>
-    <pin angle="180" pos="19" type="bidir" id="PD5"/>
-    <pin angle="180" pos="20" type="bidir" id="PD6"/>
-    <pin angle="0"   pos="20" type="bidir" id="PD7"/>
+    <pin angle="180" pos="14" type="bidir" id="PD0" label="D0"/>
+    <pin angle="180" pos="15" type="bidir" id="PD1" label="D1"/>
+    <pin angle="180" pos="16" type="bidir" id="PD2" label="D2"/>
+    <pin angle="180" pos="17" type="bidir" id="PD3" label="D3"/>
+    <pin angle="180" pos="18" type="open"  id="PD4" label="D4"/>
+    <pin angle="180" pos="19" type="bidir" id="PD5" label="D5"/>
+    <pin angle="180" pos="20" type="bidir" id="PD6" label="D6"/>
+    <pin angle="0"   pos="20" type="bidir" id="PD7" label="D7"/>
     
-    <pin angle="0"   pos="19" type="bidir" id="PC0"/>
-    <pin angle="0"   pos="18" type="bidir" id="PC1"/>
-    <pin angle="0"   pos="17" type="bidir" id="PC2"/>
-    <pin angle="0"   pos="16" type="bidir" id="PC3"/>
-    <pin angle="0"   pos="15" type="open"  id="PC4"/>
-    <pin angle="0"   pos="14" type="bidir" id="PC5"/>
-    <pin angle="0"   pos="13" type="bidir" id="PC6"/>
-    <pin angle="0"   pos="12" type="bidir" id="PC7"/>
+    <pin angle="0"   pos="19" type="bidir" id="PC0" label="C0"/>
+    <pin angle="0"   pos="18" type="bidir" id="PC1" label="C1"/>
+    <pin angle="0"   pos="17" type="bidir" id="PC2" label="C2"/>
+    <pin angle="0"   pos="16" type="bidir" id="PC3" label="C3"/>
+    <pin angle="0"   pos="15" type="open"  id="PC4" label="C4"/>
+    <pin angle="0"   pos="14" type="bidir" id="PC5" label="C5"/>
+    <pin angle="0"   pos="13" type="bidir" id="PC6" label="C6"/>
+    <pin angle="0"   pos="12" type="bidir" id="PC7" label="C7"/>
     
-    <pin angle="0"   pos="11" type="avcc"  id="AVCC"/>
-    <pin angle="0"   pos="10" type="gnd"   id="GND"/>
-    <pin angle="0"   pos="9" type="aref"  id="AREF"/>
+    <pin angle="0"   pos="11" type="avcc"  id="AVCC"  label="A+"/>
+    <pin angle="0"   pos="10" type="gnd"   id="GND" label=" -"/>
+    <pin angle="0"   pos="9" type="aref"  id="AREF" label="Ar"/>
     
-    <pin angle="0"   pos="8" type="bidir" id="PA7"/>
-    <pin angle="0"   pos="7" type="bidir" id="PA6"/>
-    <pin angle="0"   pos="6" type="bidir" id="PA5"/>
-    <pin angle="0"   pos="5" type="open"  id="PA4"/>
-    <pin angle="0"   pos="4" type="bidir" id="PA3"/>
-    <pin angle="0"   pos="3" type="bidir" id="PA2"/>
-    <pin angle="0"   pos="2" type="bidir" id="PA1"/>
-    <pin angle="0"   pos="1" type="bidir" id="PA0"/>
+    <pin angle="0"   pos="8" type="bidir" id="PA7"  label="A7"/>
+    <pin angle="0"   pos="7" type="bidir" id="PA6"  label="A6"/>
+    <pin angle="0"   pos="6" type="bidir" id="PA5"  label="A5"/>
+    <pin angle="0"   pos="5" type="open"  id="PA4"  label="A4"/>
+    <pin angle="0"   pos="4" type="bidir" id="PA3"  label="A3"/>
+    <pin angle="0"   pos="3" type="bidir" id="PA2"  label="A2"/>
+    <pin angle="0"   pos="2" type="bidir" id="PA1"  label="A1"/>
+    <pin angle="0"   pos="1" type="bidir" id="PA0"  label="A0"/>
     
 </mcu>
 
