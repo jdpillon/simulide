@@ -1,9 +1,0 @@
-sim_tiny13.c, sim_tiny2313.c:
-    #include </usr/include/stdio.h> -> #include <stdio.h>
-    init:  deleted printf
-
-elf related deleted
-gdb related deleted
-
-avr_timer.c:
-    avr_timer_configure: deleted printf
