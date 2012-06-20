@@ -61,8 +61,8 @@ McuComponentPin::McuComponentPin( McuComponent *mcuComponent, QString id, QStrin
 }
 McuComponentPin::~McuComponentPin()
 {
-    if( m_ePin[0]->isConnected() )
-        m_ePin[0]->getEnode()->remFromChangedList(this);
+    /*if( m_ePin[0]->isConnected() )
+        m_ePin[0]->getEnode()->remFromChangedList(this);*/
 }
 
 void McuComponentPin::terminate()

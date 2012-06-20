@@ -175,7 +175,7 @@ void McuComponent::remove()
     foreach( McuComponentPin *mcupin, m_pinList )
     {
         Pin* pin = mcupin->pin(); //static_cast<Pin*>(mcupin->pin());
-        if( pin->isConnected() ) pin->connector()->remove();
+        if( pin->connector() ) pin->connector()->remove();
     }
     terminate();
     m_pinList.clear();
@@ -227,6 +227,17 @@ void McuComponent::slotLoad()
     QString fileName = QFileDialog::getOpenFileName( 0l, tr("Load Firmware"), dir,
                        tr("Hex Files (*.hex);;all files (*.*)"));
 
+    load( fileName );
+}
+
+void McuComponent::slotReload()
+{
+    if( m_processor->getLoadStatus() ) load( m_symbolFile );
+    else QMessageBox::warning( 0, tr("No File:"), tr("No File to reload ") );
+}
+
+void McuComponent::load( QString fileName )
+{
     if( m_processor->loadFirmware( fileName ) /*&& attachDevice()*/ )
     {
         attachPins();
@@ -238,12 +249,6 @@ void McuComponent::slotLoad()
         settings.setValue( "lastFirmDir", m_symbolFile );
         //MainWindow::self()->powerCircOff();
     }
-}
-
-void McuComponent::slotReload()
-{
-    if( m_processor->getLoadStatus() ) m_processor->loadFirmware( m_symbolFile );
-    else QMessageBox::warning( 0, tr("No File:"), tr("No File to reload ") );
 }
 
 void McuComponent::paint( QPainter *p, const QStyleOptionGraphicsItem *option, QWidget *widget )

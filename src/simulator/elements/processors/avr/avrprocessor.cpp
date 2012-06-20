@@ -33,7 +33,7 @@ AvrProcessor::AvrProcessor( QObject* parent ) : BaseProcessor( parent )
     m_pSelf = this;
     m_avrProcessor = 0l;
 }
-AvrProcessor::~AvrProcessor() { }
+AvrProcessor::~AvrProcessor() { terminate();}
 
 void AvrProcessor::terminate()
 {
